@@ -6,12 +6,21 @@
 3. add a button that makes a popup that asks to make a bigger grid (100max)
 */
 
-let board = document.querySelector(".board");
-    board.style.gridTemplateColumns = "repeat(16 , 1fr)";
-    board.style.gridTemplateRows = "repeat(16 , 1fr)";
-    
-for (let i=0; i<256; i++) {
+function populateBoard(size) {
+    let board = document.querySelector(".board");
+    board.style.gridTemplateColumns = `repeat(${size} , 1fr)`;
+    board.style.gridTemplateRows = `repeat(${size} , 1fr)`;
+
+let amount = size * size;
+for (let i=0; i<amount; i++) {
     let square = document.createElement('div');
-    square.style.backgroundColor = "blue";
+    square.style.backgroundColor = "white";
+    square.addEventListener("mouseover", () => {
+        square.style.backgroundColor = "black";
+    });
     board.insertAdjacentElement('beforeend', square);
-}
+  }
+} 
+
+populateBoard(16);
+

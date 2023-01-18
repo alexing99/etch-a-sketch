@@ -5,10 +5,28 @@
     justify-content: center;
 }
 
+
+
 .board {
     width: 600px;
     height: 600px;
     border: 5px solid black;
-    display : grid;
-    
+    display : grid;   
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    margin: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
 }

@@ -1,13 +1,13 @@
 /*
-1. create webpage with a 16*16 grid of square divs 
-    - so one big div (mainDiv) and then 16 divs flexed inside (with js)
-2. add hover effect 
-    - add eventlistner for hover and then change color of gridDiv
 3. add a button that makes a popup that asks to make a bigger grid (100max)
+4. add a clear button
+5. add a color selector
 */
 
 function populateBoard(size) {
     let board = document.querySelector(".board");
+    let squares = board.querySelectorAll("div");
+    squares.forEach((div) => div.remove());
     board.style.gridTemplateColumns = `repeat(${size} , 1fr)`;
     board.style.gridTemplateRows = `repeat(${size} , 1fr)`;
 
@@ -24,3 +24,10 @@ for (let i=0; i<amount; i++) {
 
 populateBoard(16);
 
+let setGrid = document.querySelector(".set-size");
+    setGrid.addEventListener("click",() => {
+        let newGrid = window.prompt("How many squares would you like?");
+        if (newGrid != null && newGrid < 100) {
+            populateBoard(newGrid);
+        }
+    });

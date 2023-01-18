@@ -31,3 +31,13 @@ let setGrid = document.querySelector(".set-size");
             populateBoard(newGrid);
         }
     });
+
+
+let resetBoard = document.querySelector(".reset");
+    resetBoard.addEventListener("click", () => {
+        let squares = document.querySelectorAll('div');
+        squares.forEach((div) => (div.style.backgroundColor = "white"));
+        console.log ("it works");
+    })
+
+

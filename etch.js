@@ -15,9 +15,7 @@ let amount = size * size;
 for (let i=0; i<amount; i++) {
     let square = document.createElement('div');
     square.style.backgroundColor = "white";
-    square.addEventListener("mouseover", () => {
-        square.style.backgroundColor = "black";
-    });
+    square.addEventListener("mouseover", colorSquare);
     board.insertAdjacentElement('beforeend', square);
   }
 } 
@@ -37,7 +35,21 @@ let resetBoard = document.querySelector(".reset");
     resetBoard.addEventListener("click", () => {
         let squares = document.querySelectorAll('div');
         squares.forEach((div) => (div.style.backgroundColor = "white"));
-        console.log ("it works");
     })
 
+let eraser = document.querySelector(".eraser");
+    eraser.addEventListener("click", () => {
+        changeColor ("white");
+    })
 
+function changeColor(choice) {
+    color = choice;
+}
+
+function colorSquare() {
+    if (color === "random") {
+        this.style.backgroundColor = `hsl(${Math.random () * 360}, 100%, 50%)`;
+    } else {
+        this.style.backgroundColor = color;
+    }
+}

@@ -1,8 +1,19 @@
-/*
-3. add a button that makes a popup that asks to make a bigger grid (100max)
-4. add a clear button
-5. add a color selector
-*/
+
+
+let gradient = 0.0;
+const ADD_VALUE = 0.1;
+
+let color = `hsla(0,0%,0%,${gradient}`;
+
+function shadeBlack () {
+    for (let i=0; i<amount; i++) {
+        let square = document.createElement('div');
+        square.addEventListener("mouseover", () => {
+            gradient + ADD_VALUE;
+        });
+        board.insertAdjacentElement('beforeend', square);
+      }
+} 
 
 function populateBoard(size) {
     let board = document.querySelector(".board");
@@ -16,6 +27,9 @@ for (let i=0; i<amount; i++) {
     let square = document.createElement('div');
     square.style.backgroundColor = "white";
     square.addEventListener("mouseover", colorSquare);
+    square.addEventListener("mouseover", () => {
+        gradient += ADD_VALUE;
+    });
     board.insertAdjacentElement('beforeend', square);
   }
 } 
@@ -37,6 +51,11 @@ let resetBoard = document.querySelector(".reset");
         squares.forEach((div) => (div.style.backgroundColor = "white"));
     })
 
+let black = document.querySelector(".black");
+black.addEventListener("click", () => {
+    changeColor ("black");
+})
+
 let eraser = document.querySelector(".eraser");
     eraser.addEventListener("click", () => {
         changeColor ("white");
@@ -46,10 +65,12 @@ function changeColor(choice) {
     color = choice;
 }
 
+let random = document.querySelector(".random");
+    random.addEventListener("click", () => {
+        changeColor (`hsl(${Math.random () * 360}, 100%, 50%)`);
+    })
+
 function colorSquare() {
-    if (color === "random") {
-        this.style.backgroundColor = `hsl(${Math.random () * 360}, 100%, 50%)`;
-    } else {
-        this.style.backgroundColor = color;
-    }
+    this.style.backgroundColor = color;
 }
+

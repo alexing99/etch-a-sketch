@@ -1,19 +1,4 @@
-
-
-let gradient = 0.0;
-const ADD_VALUE = 0.1;
-
-let color = `hsla(0,0%,0%,${gradient}`;
-
-function shadeBlack () {
-    for (let i=0; i<amount; i++) {
-        let square = document.createElement('div');
-        square.addEventListener("mouseover", () => {
-            gradient + ADD_VALUE;
-        });
-        board.insertAdjacentElement('beforeend', square);
-      }
-} 
+let color = `hsla(0,0%,0%`;
 
 function populateBoard(size) {
     let board = document.querySelector(".board");
@@ -27,9 +12,6 @@ for (let i=0; i<amount; i++) {
     let square = document.createElement('div');
     square.style.backgroundColor = "white";
     square.addEventListener("mouseover", colorSquare);
-    square.addEventListener("mouseover", () => {
-        gradient += ADD_VALUE;
-    });
     board.insertAdjacentElement('beforeend', square);
   }
 } 
@@ -47,8 +29,9 @@ let setGrid = document.querySelector(".set-size");
 
 let resetBoard = document.querySelector(".reset");
     resetBoard.addEventListener("click", () => {
-        let squares = document.querySelectorAll('div');
+        let squares = document.querySelectorAll('.board div');
         squares.forEach((div) => (div.style.backgroundColor = "white"));
+        squares.forEach((div) => (div.style.opacity = 0));
     })
 
 let black = document.querySelector(".black");
@@ -72,5 +55,7 @@ let random = document.querySelector(".random");
 
 function colorSquare() {
     this.style.backgroundColor = color;
+    const currentOpacity = Number (this.style.opacity);
+    this.style.opacity = currentOpacity + .15;
 }
 

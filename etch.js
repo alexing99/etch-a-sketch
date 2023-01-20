@@ -20,8 +20,8 @@ populateBoard(16);
 
 let setGrid = document.querySelector(".set-size");
     setGrid.addEventListener("click",() => {
-        let newGrid = window.prompt("How many squares would you like?");
-        if (newGrid != null && newGrid < 100) {
+        let newGrid = window.prompt("How many squares would you like? (eg. input 50 for a 50x50 grid. max is 100)");
+        if (newGrid != null && newGrid < 101) {
             populateBoard(newGrid);
         }
     });
@@ -56,6 +56,6 @@ let random = document.querySelector(".random");
 function colorSquare() {
     this.style.backgroundColor = color;
     const currentOpacity = Number (this.style.opacity);
-    this.style.opacity = currentOpacity + .15;
+    this.style.opacity = currentOpacity + .2;
 }
 
